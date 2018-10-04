@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PaytoPDF</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" />
+	<style>
+	 #box-container {
+    	margin-top: 150px;
+	}
+	</style>
+</head>
+<body>
+	<div id="box-container">
+		<div class="ui raised very padded text container segment">
+		  <h2 class="ui header">Event Name</h2>
+		  <form class="ui form" action="./confirmation.html">
+			  <div class="field">
+			    <label>Name</label>
+			    <input id="name" name="name" placeholder="Name" type="text">
+			  </div>
+			  <div class="field">
+			    <label>E-mail</label>
+			    <input id="email" name="email" placeholder="E-mail" type="email">
+			  </div>
+			  <div class="field">
+			    <label>Billing Address</label>
+			    <input id="address" type="text" name="address" placeholder="Address">
+			  </div>
+			  <div class="field four wide field">
+			    <label>Zipcode</label>
+			    <input id="zipcode" type="text" name="zipcode" placeholder="Zipcode">
+			  </div>
+			  <button id="submit" class="ui inverted green button" type="submit">Submit</button>
+		  </form>
+		</div>
+	</div>
+</body>
+<script>
+	document.querySelector('#submit').onclick = function(e){
+		var form_name = document.querySelector('#name').value;
+		var form_email = document.querySelector('#email').value;
+		var form_address = document.querySelector('#address').value;
+		var form_zipcode = document.querySelector('#zipcode').value;
+		window.localStorage.setItem("name", form_name);
+		window.localStorage.setItem("email", form_email);
+		window.localStorage.setItem("address", form_address);
+		window.localStorage.setItem("zipcode", form_zipcode);
+	}
+</script>
+</html>
