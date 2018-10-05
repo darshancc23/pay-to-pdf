@@ -22,21 +22,30 @@
 <script>
   function pdf(){
   var name = window.localStorage.getItem("name");
-  var email = window.localStorage.getItem("email"); 
+  var email = window.localStorage.getItem("email");
+	var number = window.localStorage.getItem("number");
+	var check = window.localStorage.getItem("check");
+	var radio = window.localStorage.getItem("radio");
   var doc = new jsPDF();
   doc.setFontSize(26);
 	doc.setTextColor(92, 76, 76);
   doc.text(23, 12, "EVENT!")
   doc.text(23, 81, name);
   doc.text(23, 101, email);
+	doc.text(23, 121, number);
+	doc.text(23, 131, check);
+	doc.text(23, 141, radio);
   doc.save('test.pdf');
   window.localStorage.clear();
   }
 </script>
 <script>
 (function(){
-  var name = window.localStorage.getItem("name");
+	var name = window.localStorage.getItem("name");
   var email = window.localStorage.getItem("email");
+	var number = window.localStorage.getItem("number");
+	var check = window.localStorage.getItem("check");
+	var radio = window.localStorage.getItem("radio");
   var options = {
     "key": "rzp_test_Y3ZqWJHAv7fVti",
     "amount": "20000",
