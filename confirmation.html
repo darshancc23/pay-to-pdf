@@ -23,12 +23,25 @@
     function pdf() {
         let name = window.localStorage.getItem("name");
         let email = window.localStorage.getItem("email");
+        /* temporarily setting date to current date of pdf receipt issue
+        should probably be stored to localStorage along with name and email */
+        let date = new Date().toDateString();
         let doc = new jsPDF();
         doc.setFontSize(26);
         doc.setTextColor(92, 76, 76);
-        doc.text(23, 12, "EVENT!")
-        doc.text(23, 81, name);
-        doc.text(23, 101, email);
+        doc.text(20, 20, 'Transaction Details');
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(214,214,214);
+        doc.line(20, 30, 180, 30);
+        doc.setFontSize(18);
+        doc.text(20, 45, 'Name: ' + name);
+        doc.text(20, 65, 'Email: ' + email);
+        doc.text(20, 85, 'Transaction Date: ' + date);
+        doc.text(20, 105, 'Transaction ID: jxB9ZZcuwZ'); // temp ID value
+        doc.text(20, 125, 'Transaction Type: Order'); // default Order for now, but this may not be needed
+        doc.text(20, 145, 'Payment Method: ' + 'Credit Card'); // should change based on Razorpay options
+        doc.text(20, 165, 'Charged Amount: '+ '200.00 Rupees'); // This should be received from Razorpay
+        doc.text(20, 185, 'Status: '+ 'Success');
         doc.save('payment_details.pdf');
         window.localStorage.clear();
     }
