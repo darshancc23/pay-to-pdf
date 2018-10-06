@@ -24,11 +24,60 @@
         let name = window.localStorage.getItem("name");
         let email = window.localStorage.getItem("email");
         let doc = new jsPDF();
-        doc.setFontSize(26);
-        doc.setTextColor(92, 76, 76);
-        doc.text(23, 12, "EVENT!")
-        doc.text(23, 81, name);
-        doc.text(23, 101, email);
+
+        // Border-rectangle
+
+        doc.setDrawColor(220, 220, 220);
+        doc.rect(50, 37, 120, 85, 'D');
+
+        // Underline
+
+        doc.setFillColor(30, 125, 0);
+        doc.rect(50, 20, 120, 0.7, 'F');
+
+        // Heading
+
+        doc.setFontSize(25);
+        doc.setFontType("bold");
+        doc.setTextColor(60, 60, 60);
+        doc.text(72, 16, "Payment Successful");
+
+        // Body
+
+        doc.setFontSize(17);
+        doc.setFontType("bold");
+        doc.text(55, 50, "Details");
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 65, "Payment Gateway:");
+        doc.setFontType("");
+        doc.text(95, 65, "SBI Netbanking"); //  To be updated by real gateway
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 75, "Name:");
+        doc.setFontType("");
+        doc.text(70, 75, name);
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 85, "Email:");
+        doc.setFontType("");
+        doc.text(70, 85, email);
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 95, "Transaction ID:");
+        doc.setFontType("");
+        doc.text(90, 95, 'SBI4512541252312');   //  To be updated by real ID
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 105, "Amount:");
+        doc.setFontType("");
+        doc.text(75, 105, 'Rs. 5,000/-');   //  To be updated by real amount
+
         doc.save('payment_details.pdf');
         window.localStorage.clear();
     }
