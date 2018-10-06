@@ -1,8 +1,6 @@
 # pay-to-pdf
 
-Goal : Build an application that generates payment details in PDF format after every successfull payment.
-Currently the application is taking in inputs like name and email id only. Following which the user is directed to a payment window where they can chose from a variety of payment options like netbanking, wallets, cards etc.
-On payment completion, the application builds a pdf having the entered name and email(as entered).
-Inviting the open source community to work on additional functionalities. Also look into the issues listed. 
+GOAL:This website comtains two basic pages the index page where u need to enter your name and your email address to organize an event.when u click on submit it takes you to the another page of the website that is contributor file where u can pay by entering your phone no and email.There are options to pay with with different payment methods like card,wallet,upi and netbanking.On payment completion, the application builds a pdf having the entered name and email(as entered). 
+
 
 Happy Coding :)
