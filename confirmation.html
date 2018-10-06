@@ -3,11 +3,7 @@
 <head>
     <title>Confirmation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"/>
-    <style>
-        #box-container {
-            margin-top: 150px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <div id="box-container">
@@ -19,50 +15,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-    function pdf() {
-        let name = window.localStorage.getItem("name");
-        let email = window.localStorage.getItem("email");
-        let doc = new jsPDF();
-        doc.setFontSize(26);
-        doc.setTextColor(92, 76, 76);
-        doc.text(23, 12, "EVENT!")
-        doc.text(23, 81, name);
-        doc.text(23, 101, email);
-        doc.save('payment_details.pdf');
-        window.localStorage.clear();
-    }
-</script>
-<script>
-    (function () {
-        let name = window.localStorage.getItem("name");
-        let email = window.localStorage.getItem("email");
-        let options = {
-            "key": "rzp_test_Y3ZqWJHAv7fVti",
-            "amount": "20000",
-            "name": "Organization name",
-            "description": "Event Name",
-            "image": "/your_logo.png",
-            "handler": (response) => {
-                setTimeout(function () {
-                    pdf();
-                    window.location = "./index.html";
-                }, 2000);
-            },
-            "prefill": {
-                "email": email
-            },
-            "theme": {
-                "color": "#222"
-            }
-        };
-        let rzp1 = new Razorpay(options);
-
-        document.getElementById('rzp-button1').onclick = function (e) {
-            rzp1.open();
-            e.preventDefault();
-        }
-    })();
-</script>
+<script src="./js/confirmation.js"></script>
 </body>
 </html>
