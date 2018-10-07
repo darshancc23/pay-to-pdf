@@ -3,11 +3,7 @@
 <head>
     <title>PaytoPDF</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"/>
-    <style>
-        #box-container {
-            margin-top: 150px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 <div id="box-container">
@@ -27,12 +23,7 @@
     </div>
 </div>
 </body>
-<script>
-    document.querySelector('#submit').onclick = function (e) {
-        let form_name = document.querySelector('#name').value;
-        let form_email = document.querySelector('#email').value;
-        window.localStorage.setItem("name", form_name);
-        window.localStorage.setItem("email", form_email);
-    }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="assets/js/script.js"></script>
 </html>
