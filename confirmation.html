@@ -15,6 +15,100 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    function pdf() {
+        let name = window.localStorage.getItem("name");
+        let email = window.localStorage.getItem("email");
+        let doc = new jsPDF();
+
+        // Border-rectangle
+
+        doc.setDrawColor(220, 220, 220);
+        doc.rect(50, 37, 120, 85, 'D');
+
+        // Underline
+
+        doc.setFillColor(30, 125, 0);
+        doc.rect(50, 20, 120, 0.7, 'F');
+
+        // Heading
+
+        doc.setFontSize(25);
+        doc.setFontType("bold");
+        doc.setTextColor(60, 60, 60);
+        doc.text(72, 16, "Payment Successful");
+
+        // Body
+
+        doc.setFontSize(17);
+        doc.setFontType("bold");
+        doc.text(55, 50, "Details");
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 65, "Payment Gateway:");
+        doc.setFontType("");
+        doc.text(95, 65, "SBI Netbanking"); //  To be updated by real gateway
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 75, "Name:");
+        doc.setFontType("");
+        doc.text(70, 75, name);
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 85, "Email:");
+        doc.setFontType("");
+        doc.text(70, 85, email);
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 95, "Transaction ID:");
+        doc.setFontType("");
+        doc.text(90, 95, 'SBI4512541252312');   //  To be updated by real ID
+
+        doc.setFontSize(12);
+        doc.setFontType("bold");
+        doc.text(55, 105, "Amount:");
+        doc.setFontType("");
+        doc.text(75, 105, 'Rs. 5,000/-');   //  To be updated by real amount
+
+        doc.save('payment_details.pdf');
+        window.localStorage.clear();
+    }
+</script>
+<script>
+    (function () {
+        let name = window.localStorage.getItem("name");
+        let email = window.localStorage.getItem("email");
+        let options = {
+            "key": "rzp_test_Y3ZqWJHAv7fVti",
+            "amount": "20000",
+            "name": "Organization name",
+            "description": "Event Name",
+            "image": "/your_logo.png",
+            "handler": (response) => {
+                setTimeout(function () {
+                    pdf();
+                    window.location = "./index.html";
+                }, 2000);
+            },
+            "prefill": {
+                "email": email
+            },
+            "theme": {
+                "color": "#222"
+            }
+        };
+        let rzp1 = new Razorpay(options);
+
+        document.getElementById('rzp-button1').onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+        }
+    })();
+</script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
