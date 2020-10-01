@@ -8,6 +8,5 @@
 #NEED : Inviting the open source community to work on additional functionalities. 
         Also look into the issues listed. 
 
-#Happy Coding:)
-
-#Thank you.
+Happy Coding:)
+Thank you.
